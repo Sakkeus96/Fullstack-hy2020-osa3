@@ -1,1 +1,1 @@
-https://evening-fortress-35060.herokuapp.com/api/persons
+https://evening-fortress-35060.herokuapp.com
