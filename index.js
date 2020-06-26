@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
+const cors = require('cors')
 
 morgan.token('person', (req, res) => {
     return JSON.stringify(req.body)
@@ -29,7 +30,7 @@ let persons = [
   }
 ]
 
-
+app.use(cors())
 app.use(express.json())
 app.use(morgan('tiny', {
     skip: (req, res) => {return req.method === "POST"}
@@ -88,6 +89,6 @@ app.delete('/api/persons/:id', (req,res) =>
     persons = persons.filter(person => person.id !== id)
     res.status(204).end()
 })
-const port = 3001
-app.listen(port)
-console.log(`Server running on port ${port}`)
+const PORT = process.env.PORT || 3001
+app.listen(PORT)
+console.log(`Server running on port ${PORT}`)
