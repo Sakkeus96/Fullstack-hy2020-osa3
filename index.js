@@ -32,6 +32,7 @@ let persons = [
 
 app.use(cors())
 app.use(express.json())
+app.use(express.static('build'))
 app.use(morgan('tiny', {
     skip: (req, res) => {return req.method === "POST"}
 }))
